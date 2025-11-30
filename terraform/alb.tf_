@@ -1,0 +1,32 @@
+resource "yandex_alb_load_balancer" "alb" {
+  name = "hexly-devops-load_balancer"
+
+  listener {
+    name = "http"
+    port = 80
+    protocol = "HTTP"
+  }
+
+  http_router {
+    name = "router"
+    virtual_host {
+      name = "example.com"
+      backend_group_id = yandex_alb_backend_group.bg.id
+    }
+  }
+}
+
+resource "yandex_alb_backend_group" "bg" {
+  name = "my-bg"
+
+  target_group_id = yandex_alb_target_group.tg.id
+}
+
+resource "yandex_alb_target_group" "tg" {
+  name = "my-tg"
+
+  target {
+    subnet_id = yandex_vpc_subnet.subnet.id
+    address = "10.0.0.10"
+  }
+}
