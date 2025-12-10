@@ -33,7 +33,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("./key/yc.pub")}"
+    ssh-keys = "ubuntu:${file("../key/yc.pub")}"
   }
 }
 
@@ -56,7 +56,7 @@ resource "yandex_compute_instance" "vm-2" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("./key/yc.pub")}"
+    ssh-keys = "ubuntu:${file("../key/yc.pub")}"
   }
 }
 
