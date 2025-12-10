@@ -1,8 +1,3 @@
-variable "ssh_public_key" {
-  type = string
-  sensitive = true
-}
-
 resource "yandex_compute_disk" "hdd-vm1" {
   name     = "drive-1"
   type     = "network-hdd"
@@ -38,7 +33,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
 
   metadata = {
-    ssh-keys = "hexly:${file("./key/yc.pub")}"
+    ssh-keys = "ubuntu:${file("./key/yc.pub")}"
   }
 }
 
@@ -61,7 +56,7 @@ resource "yandex_compute_instance" "vm-2" {
   }
 
   metadata = {
-    ssh-keys = "hexly:${file("./key/yc.pub")}"
+    ssh-keys = "ubuntu:${file("./key/yc.pub")}"
   }
 }
 
