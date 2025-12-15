@@ -54,9 +54,9 @@
         - "{{ pg_env_file_path }}"
         - "{{ rm_env_file_path }}"
 
-    # - name: Import the Datadog Agent role from the Datadog collection
-    #   import_role:
-    #     name: datadog.dd.agent
+    - name: Import the Datadog Agent role from the Datadog collection
+      import_role:
+        name: datadog.dd.agent
 
   roles:
     - geerlingguy.pip

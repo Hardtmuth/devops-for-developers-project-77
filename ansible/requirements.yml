@@ -1,4 +1,3 @@
 roles:
   - name: geerlingguy.pip
   - name: geerlingguy.docker
-  - name: datadog.dd.agent
