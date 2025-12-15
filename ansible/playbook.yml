@@ -8,6 +8,8 @@
       - name: docker
     pg_env_file_path: "/tmp/postgres.env"
     rm_env_file_path: "/tmp/redmine.env"
+    datadog_api_key: "{{ datadog_vars.datadog_api_key }}"
+    datadog_site: "{{ datadog_vars.datadog_site }}"
 
   pre_tasks:
     - name: Perform full system upgrade
@@ -51,6 +53,10 @@
       loop:
         - "{{ pg_env_file_path }}"
         - "{{ rm_env_file_path }}"
+
+    - name: Import the Datadog Agent role from the Datadog collection
+      import_role:
+        name: datadog.dd.agent
 
   roles:
     - geerlingguy.pip

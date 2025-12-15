@@ -35,3 +35,12 @@ ansible-playbook:
 ansible-check:
 	cd "$(ANSIBLE_DIR)" && \
 	ansible-playbook --check playbook.yml -i inventory.ini
+ansible-encrypt:
+	cd "$(ANSIBLE_DIR)" && \
+	ansible-vault encrypt group_vars/webservers/vault.yml
+ansible-decrypt:
+	cd "$(ANSIBLE_DIR)" && \
+	ansible-vault decrypt group_vars/webservers/vault.yml
+ansible-edit-vault:
+	cd "$(ANSIBLE_DIR)" && \
+	ansible-vault edit group_vars/webservers/vault.yml

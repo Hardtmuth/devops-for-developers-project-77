@@ -41,16 +41,16 @@ resource "yandex_mdb_postgresql_cluster" "pg_single" {
   }
 }
 
-resource "yandex_mdb_postgresql_database" "pg_db" {
-  cluster_id = yandex_mdb_postgresql_cluster.pg_single.id
-  name       = var.db_name
-  owner      = var.db_user
-}
-
 resource "yandex_mdb_postgresql_user" "pg_user" {
   cluster_id = yandex_mdb_postgresql_cluster.pg_single.id
   name       = var.db_user
   password   = var.db_password
+}
+
+resource "yandex_mdb_postgresql_database" "pg_db" {
+  cluster_id = yandex_mdb_postgresql_cluster.pg_single.id
+  name       = var.db_name
+  owner      = var.db_user
 }
 
 output "cluster_id" {
