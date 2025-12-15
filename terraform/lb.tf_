@@ -28,7 +28,7 @@ resource "yandex_lb_network_load_balancer" "hexly-devops-nlb" {
     healthcheck {
       name = "http-healthcheck"
       http_options {
-        port = 8080
+        port = 3000
         path = "/health"
       }
     }

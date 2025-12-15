@@ -11,9 +11,27 @@ encrypt-vmdata:
 decrypt-vmdata:
 	ansible-vault decrypt ./terraform/vms.user.auto.tfvars
 
+TERRAFORM_DIR = ./terraform
+
 tf-validate:
-	cd terraform & terraform validate
+	cd "$(TERRAFORM_DIR)" && \
+	terraform validate
 tf-plan:
-	cd terraform & terraform plan
+	cd "$(TERRAFORM_DIR)" && \
+	terraform plan
 tf-apply:
-	cd terraform & terraform apply
+	cd "$(TERRAFORM_DIR)" && \
+	terraform apply
+
+
+ANSIBLE_DIR = ./ansible
+
+ansible-ping:
+	cd "$(ANSIBLE_DIR)" && \
+	ansible webservers -i inventory.ini -m ping
+ansible-playbook:
+	cd "$(ANSIBLE_DIR)" && \
+	ansible-playbook playbook.yml -i inventory.ini
+ansible-check:
+	cd "$(ANSIBLE_DIR)" && \
+	ansible-playbook --check playbook.yml -i inventory.ini

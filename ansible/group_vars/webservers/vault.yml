@@ -1,0 +1,6 @@
+postgres_vars:
+  POSTGRES_USER: "hexly"
+  POSTGRES_PASSWORD: "Service-Password-hexly-devops1!"
+  POSTGRES_DB: "hexly-devops-db"
+  POSTGRES_ADDRESS: "10.0.0.27"
+  POSTGRES_PORT: "6432"
