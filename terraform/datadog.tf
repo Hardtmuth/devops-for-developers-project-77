@@ -1,5 +1,5 @@
 resource "datadog_synthetics_test" "app_liveness_check" {
-  name    = "Проверка живости приложения (HTTP GET)"
+  name    = "Check http (HTTP GET)"
   type    = "api"
   subtype = "http"
   status  = "live"
@@ -9,7 +9,7 @@ resource "datadog_synthetics_test" "app_liveness_check" {
 
   request_definition {
     method = "GET"
-    url    = "hexlydevops.space"
+    url    = "https://hexlydevops.space"
   }
 
   assertion {
